@@ -1,6 +1,6 @@
-{message}
-
-{% for image in images%}
+<h1><strong>{{message}}
+</strong></h1>
+{% for image in images %}
 <div>
     <img src="{{image.image.url}}" alt="{{image.image_name}} image" srcset="">
 </div>
@@ -9,4 +9,8 @@
 {{image.likes}}
 {{image.comments}}
 
-{ % endfor %}
+{% empty %}
+  <div class="row">
+    <h2 class="text-center">There No images to display</h2>
+  </div>
+  {% endfor %}

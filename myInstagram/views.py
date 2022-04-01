@@ -5,6 +5,7 @@ from .models import Image, Profile
 
 def welcome(request):
     images = Image.objects.all()
+    message ="Welcome to my Instagram clone"
 
-    return render('index.html',{'images':images})
+    return render(request,'index.html',{'images':images, 'message': message})
 
