@@ -1,0 +1,12 @@
+{message}
+
+{% for image in images%}
+<div>
+    <img src="{{image.image.url}}" alt="{{image.image_name}} image" srcset="">
+</div>
+{{image.image_name}}
+{{image.caption}}
+{{image.likes}}
+{{image.comments}}
+
+{ % endfor %}
