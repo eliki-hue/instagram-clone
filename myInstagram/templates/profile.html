@@ -1,2 +1,24 @@
 <h1>welcome to your profile page</h1>
+{% block contents %}
+<a class="nav-link" href="/update_profile">update profile</a>
+{% for profile in profile %}
+
+<div>
+    <img src="{{profile.profile_image.url}}" alt="{{profile.username}} image" srcset="">
+</div>
 {{profile.username}}
+{{profile.usernemail}}
+{{profile.userage}}
+{{profile.user_password}}
+
+
+{% empty %}
+  <div class="row">
+    <h2 class="text-center">No profile info set</h2>
+    <a class="nav-link" href="/update_profile">create profile</a>
+    <button action="FormProfile()" type="submit">create</button>
+    
+  </div>
+  {% endfor %}
+
+  {%endblock%}
