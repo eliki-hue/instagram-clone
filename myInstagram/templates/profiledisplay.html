@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load bootstrap5 %}
 {% block content %}
+{{message}}
 <div class="container">
-    <form action="#">
+    <form  action="{%url 'profile_update'%}" method="post" enctype="multipart/form-data">
     
         {% bootstrap_form form %}
         <div class="form-group">

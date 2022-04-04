@@ -22,24 +22,28 @@ def profile_update(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            username = current_user
-            useremail=form.cleaned_data['useremail']
-            userage=form.cleaned_data['userage']
-            profile_image=form.cleaned_data['profile_image']
-            user_password=form.cleaned_data['user_password']
+            # username = form.cleaned_data['username']
+            # useremail=form.cleaned_data['useremail']
+            # userage=form.cleaned_data['userage']
+            # profile_image=form.cleaned_data['profile_image']
+            # user_password=form.cleaned_data['user_password']
+            # info=Profile(username,useremail,userage,profile_image,user_password)
+            form.save()
+            message='saved successfuly'
     else:
         form = ProfileForm()
-    return render(request, 'profiledisplay.html',{'form':form})
+        message ='not saved'
+    return render(request, 'profiledisplay.html',{'form':form, 'message':message})
        
        
 
 def profile_display(request):
 
-    
-    # profile= Profile.objects.get().all()
+    current_user = request.user
+    profile= Profile.objects.filter(username==current_user)
    
 
-    return render(request, 'profile.html')
+    return render(request, 'profile.html',{'profile':profile})
 
 
     
