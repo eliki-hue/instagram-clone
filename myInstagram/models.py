@@ -37,6 +37,8 @@ class Image(models.Model):
 
     def delete_image(self,image_reff):
         to_delete= Image.objects.filter(name=image_reff).delete()
+
+    
     
 
     

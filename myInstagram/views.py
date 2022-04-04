@@ -40,7 +40,7 @@ def profile_update(request):
 def profile_display(request):
 
     current_user = request.user
-    profile= Profile.objects.filter(username==current_user)
+    profile= Profile.objects.filter('username'==current_user)
    
 
     return render(request, 'profile.html',{'profile':profile})
