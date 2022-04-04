@@ -2,7 +2,7 @@ from email import message
 from django.shortcuts import redirect, render
 from .models import Image, Profile
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm
+from .forms import ProfileForm, ImageForm
 
 # Create your views here.
 
@@ -60,5 +60,18 @@ def profile_display(request):
     return render(request, 'profile.html',{'profile':profile})
 
 
-    
-
+def add_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_post=form.save(commit=False)
+            new_post.profile=current_user
+            new_post.save()
+           
+                        
+    else:
+        form = ImageForm()
+        
+    return render(request, 'add_post.html',{'form':form})
+       
