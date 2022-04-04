@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('myInstagram.urls')),
     path('accounts/', include('registration.backends.simple.urls')),
-    path('logout/', views.LogoutView.as_view, {"next_page": '/'}), 
+    path('logout/', views.LogoutView.as_view(), {"next_page": '/'}), 
+    path('', views.redirect_to_login, {"next_page": '/'})
 ]
