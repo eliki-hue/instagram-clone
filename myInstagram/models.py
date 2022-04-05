@@ -21,12 +21,15 @@ class Profile(models.Model):
         Profile.objects.filter(username=old_user).update(name=new_user)
         self.save()
 
+class Comment(models.Model):
+    comments =models.CharField(max_length=100)
+
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
     image_name = models.CharField(max_length =60)
     image_caption= models.CharField(max_length=100)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    likes = models.CharField(blank=True,max_length=10)
+    likes = models.CharField(blank=True,max_length=10 , default=0)
     comments = models.CharField(blank=True, max_length=50)
 
     def __str__(self):
