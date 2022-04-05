@@ -82,10 +82,15 @@ def add_comment(request):
     if request.method == 'POST':
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save(commit=False)
+            new_comment=form.save(commit=False)
             # new_post.profile=current_user
-            # new_post.save()
-            print('post saved')
+            new_comment.save()
+            print('comment saved')
             return redirect(home)
+        
+    else:
+        form = CommentForm()
+            
+        return render(request, 'add_comment.html',{'form':form})
 
-       
+        
