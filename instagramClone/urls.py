@@ -22,5 +22,7 @@ urlpatterns = [
     path('',include('myInstagram.urls')),
     path('accounts/', include('registration.backends.simple.urls')),
     path('logout/', views.LogoutView.as_view(), {"next_page": '/'}), 
-    path('', views.redirect_to_login, {"next_page": '/'})
+    path('login', views.redirect_to_login, {"next_page": '/'}),
+    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
