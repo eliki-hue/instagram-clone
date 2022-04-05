@@ -1,5 +1,15 @@
-
-<h1>welcome to your profile page</h1>
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>welcome to your profile page</h1>
 {% block contents %}
 <a class="nav-link" href="/update_profile">update profile</a>
 {% for profile in profile %}
@@ -14,6 +24,7 @@
   <h3><strong>Name: </strong> {{profile.username}}</h3> 
   <h3> <strong> email:</strong> {{profile.useremail}}</h3>
   <h3><strong>age: </strong>{{profile.userage}}</h3>
+  <h3><strong>Bio: </strong> {{profile.bio}}</h3>
   <h3><strong>password: </strong>{{profile.user_password}}</h3>
 
 
@@ -34,3 +45,5 @@
   {% endfor %}
 
   {%endblock%}
+</body>
+</html>
