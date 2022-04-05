@@ -6,7 +6,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=20)
     useremail = models.EmailField(max_length=20)
     userage = models.CharField(max_length=2)
-    bio = models.TextField()
+    bio = models.CharField(max_length=100)
     profile_image = models.ImageField(upload_to = 'images/')
     user_password = models.CharField(max_length=15)
     def __str__(self):
