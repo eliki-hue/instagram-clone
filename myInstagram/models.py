@@ -1,10 +1,11 @@
+
 from django.db import models
 from django.contrib.auth.models import User 
 # Create your models here.
 
 class Profile(models.Model):
     username = models.CharField(max_length=20)
-    useremail = models.EmailField(max_length=20)
+    useremail = models.EmailField(max_length=30)
     userage = models.CharField(max_length=2)
     bio = models.CharField(max_length=100)
     profile_image = models.ImageField(upload_to = 'images/')
@@ -31,7 +32,7 @@ class Image(models.Model):
     image_caption= models.CharField(max_length=100)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     likes = models.CharField(blank=True,max_length=10 , default=0)
-    comments = models.ForeignKey(Comment, default=1, on_delete=models.CASCADE)
+    comments = models.CharField(null=True, max_length=100)
 
     def __str__(self):
         return self.image_name
