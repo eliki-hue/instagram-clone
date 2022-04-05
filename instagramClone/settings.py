@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myInstagram',
-    'bootstrap5'
+    'bootstrap3'
 ]
 
 MIDDLEWARE = [
