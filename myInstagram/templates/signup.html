@@ -1,6 +1,14 @@
-{% extends 'base.html' %}
+<div>
+  <div style="display:flex; background-color: antiquewhite;height: 25vh;" >
+    <div class="col-md-4 col-sm-4 col-lg-4">
+      
+    </div>
+    <div class="col-md-2 col-sm-2 col-lg-2" style="align-items: center;text-align: center;"></div>
+    <h1>Welcome to instagram-clone</h1><br>
+</div>
 
-{% block content %}
+<div style="margin-top: 5px; position: relative; margin-left: 300px;">
+  {% block content %}
   <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
@@ -19,5 +27,6 @@
     <button type="submit">Sign up</button>
   </form>
 
-  <a href="{% url 'login' %}">already have an account?</a>
+  <a href="{% url 'login' %}"><h3>Aready have an account?</h3></a>
 {% endblock %}
+</div>

@@ -1,5 +1,6 @@
-
+{%extends 'base.html'%}
 {% load bootstrap3 %}
+{% block content%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
   <h1>welcome to your profile page</h1>
-{% block contents %}
+
 <a class="nav-link" href="/update_profile">update profile</a>
 {% for profile in profile %}
 
@@ -28,18 +29,10 @@
   <h3><strong>password: </strong>{{profile.user_password}}</h3>
 
 
-
-
-
-
-
-
-
 {% empty %}
   <div class="row">
     <h2 class="text-center">No profile info set</h2>
-    <a class="nav-link" href="/update_profile">create profile</a>
-    <button action="FormProfile()" type="submit">create</button>
+    
     
   </div>
   {% endfor %}
