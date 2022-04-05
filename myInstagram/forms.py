@@ -12,7 +12,7 @@ class ProfileForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        # exclude=['profile']
+        exclude=['comments']
         fields ='__all__'
 
 class CommentForm(forms.ModelForm):

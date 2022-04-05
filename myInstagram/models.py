@@ -22,7 +22,7 @@ class Profile(models.Model):
         self.save()
 
 class Comment(models.Model):
-    comments =models.CharField(max_length=100)
+    comments =models.CharField(max_length=100, blank=True, default='great')
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
@@ -30,7 +30,7 @@ class Image(models.Model):
     image_caption= models.CharField(max_length=100)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     likes = models.CharField(blank=True,max_length=10 , default=0)
-    comments = models.CharField(blank=True, max_length=50)
+    comments = models.ForeignKey(Comment, default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.image_name

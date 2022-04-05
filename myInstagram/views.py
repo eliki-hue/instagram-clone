@@ -2,7 +2,7 @@ from email import message
 from django.shortcuts import redirect, render
 from .models import Image, Profile
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm, ImageForm
+from .forms import ProfileForm, ImageForm, CommentForm
 
 # Create your views here.
 
@@ -15,6 +15,7 @@ def first_page(request):
 def home(request):
     images = Image.objects.all()
     message ="Welcome to my Instagram clone"
+    print(images)
 
     return render(request,'index.html',{'images':images, 'message': message})
 def profile_update(request):
@@ -37,7 +38,7 @@ def profile_update(request):
                 print('profile does not exist')
                 profile=form.save(commit=False)
                 profile.username= current_user
-                profile.create()
+                profile.save()
 
             message='saved successfuly'
             # profile_display(request)
@@ -76,4 +77,15 @@ def add_post(request):
         form = ImageForm()
         
     return render(request, 'add_post.html',{'form':form})
+
+def add_comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(commit=False)
+            # new_post.profile=current_user
+            # new_post.save()
+            print('post saved')
+            return redirect(home)
+
        
